@@ -151,7 +151,7 @@ export default {
     async onSubmit() {
       if (this.value2) {
         this.perks.push(this.value2);
-      } else {
+      } else if (this.value3) {
         this.perks.push(this.value3);
       }
       const result = await this.$apollo.mutate({

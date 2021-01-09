@@ -104,7 +104,7 @@
           ok-only
           @hide="resetInfoModal"
         >
-          <pre>{{ infoModal.content }}</pre>
+          <pre> {{ infoModal.content }} </pre>
         </b-modal>
       </b-container>
     </card>
