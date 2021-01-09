@@ -78,7 +78,19 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-i18n',
      'bootstrap-vue/nuxt',
+     '@nuxtjs/apollo',
+     '@nuxtjs/axios'
   ],
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://nodejs-express-server-dev-q2jjx.ondigitalocean.app/graphql/'
+        //'https://nodejs-express-server-dev-q2jjx.ondigitalocean.app/graphql',
+        //http://localhost:5000/graphql
+        //https://nodejs-express-server-dev-q2jjx.ondigitalocean.app/graphql/
+      }
+    }
+  },
   i18n: {
     locales: [
       {

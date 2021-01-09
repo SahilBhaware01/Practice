@@ -5,15 +5,9 @@
   </div>
 </template>
 <script>
-import EditProfileForm from '../components/UserProfile/EditProfileForm.vue';
-import UserCard from '../components/UserProfile/UserCard.vue';
-
 export default {
-  name: 'user',
-  components: {
-    EditProfileForm,
-    UserCard
-  }
+  name: "user",
+  components: {},
 };
 </script>
 <style></style>
