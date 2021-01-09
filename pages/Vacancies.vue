@@ -3,7 +3,7 @@
     <div class="header">
       <h1>Vacancies</h1>
       <button class="add-vacancy">
-        <NuxtLink to="/addVacancy">Add Vacancy</NuxtLink>
+        <NuxtLink to="/addVancany">Add Vacancy</NuxtLink>
       </button>
     </div>
     <div class="vacancies-list">
@@ -43,7 +43,13 @@
                 <hr />
                 <b-row>
                   <b-col sm="9"></b-col>
-                  <b-col sm="3" @click="deletevacancy(vac.id)">Delete ></b-col>
+                  <b-button variant="info" sm="3" @click="deletevacancy(vac.id)"
+                    >Delete</b-button
+                  >
+                  <b-col sm="9"></b-col>
+                  <b-button variant="info" sm="3" @click="deletevacancy(vac.id)"
+                    >Update</b-button
+                  >
                 </b-row>
               </card>
             </b-col>
@@ -59,6 +65,11 @@ import { BaseAlert } from "@/components";
 import gql from "graphql-tag";
 
 export default {
+  data() {
+    return {
+      attribute: "5ff5eba3d071b439c8dfc8b2",
+    };
+  },
   name: "candidates",
   components: {
     BaseAlert,
@@ -83,23 +94,17 @@ export default {
     async deletevacancy(id) {
       const result = await this.$apollo.mutate({
         mutation: gql`
-          mutation($vacancyId: String!) {
-            vacancyDelete(vacancyId: "5ff719d84a6ae90228e28230") {
+          mutation($vacancyId: ID!) {
+            vacancyDelete(vacancyId: $vacancyId) {
               vacancyPost
             }
           }
         `,
         variables: {
-          vacancyPost: this.vacancyPost,
-          noOfOpenings: parseInt(this.noOfOpenings),
-          stipend: parseInt(this.stipend),
-          perks: this.perks,
-          duration: parseInt(this.duration),
-          aboutPost: this.aboutPost,
-          skillsRequired: this.skillsRequired,
-          status: this.status,
+          vacancyId: id,
         },
       });
+      this.$router.push("/Vacancies");
     },
   },
 };
