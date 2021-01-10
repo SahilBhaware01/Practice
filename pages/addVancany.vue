@@ -143,17 +143,24 @@ export default {
       value1: false,
       value2: "",
       value3: "",
+      WhoCanApply: ["sm", "tm"],
+      std: 10072020,
+      assessments: ["fg", "jk"],
     };
   },
   name: "addVacancy",
 
   methods: {
     async onSubmit() {
-      if (this.value2) {
+      if (this.value2 && this.value3) {
         this.perks.push(this.value2);
+        this.perks.push(this.value3);
       } else if (this.value3) {
         this.perks.push(this.value3);
+      } else if (this.value2) {
+        this.perks.push(this.value2);
       }
+      console.log(this.perks);
       const result = await this.$apollo.mutate({
         mutation: gql`
           mutation(

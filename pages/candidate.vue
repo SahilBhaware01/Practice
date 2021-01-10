@@ -2,7 +2,7 @@
   <div>
     <h3>Personal Details</h3>
     <b-container fluid>
-      <!--       <b-row class="my-1">
+      <b-row class="my-1">
         <b-col sm="2">
           <label for="input-default">Full Name:</label>
         </b-col>
@@ -10,7 +10,6 @@
           <b-form-input
             v-model="Fname"
             type="text"
-            id="input-default"
             placeholder="Enter your name"
           ></b-form-input>
         </b-col>
@@ -24,7 +23,6 @@
           <b-form-input
             v-model="email"
             type="text"
-            id="input-default"
             placeholder="Enter your email"
           ></b-form-input>
         </b-col>
@@ -38,7 +36,6 @@
           <b-form-input
             v-model="mobile"
             type="text"
-            id="input-default"
             placeholder="Enter your mobile number"
           ></b-form-input>
         </b-col>
@@ -51,13 +48,12 @@
         <b-col sm="8">
           <b-form-input
             v-model="address"
-            id="input-default"
             type="text"
             placeholder="Enter your address"
           ></b-form-input>
         </b-col>
       </b-row>
-      <hr />-->
+      <hr />
       <h3>Gradutation</h3>
       <b-row class="my-1">
         <b-col sm="2">
@@ -67,7 +63,6 @@
           <b-form-input
             v-model="college"
             type="text"
-            id="input-default"
             placeholder="Enter your college name"
           ></b-form-input>
         </b-col>
@@ -80,7 +75,6 @@
           <b-form-input
             v-model="Department"
             type="text"
-            id="input-default"
             placeholder="Enter your department name"
           ></b-form-input>
         </b-col>
@@ -93,7 +87,6 @@
           <b-form-input
             v-model="StartDateGra"
             type="number"
-            id="input-default"
             placeholder="Gradutation start date"
           ></b-form-input>
         </b-col>
@@ -106,7 +99,6 @@
           <b-form-input
             v-model="FinishDateGra"
             type="number"
-            id="input-default"
             placeholder="Gradutation complete date"
           ></b-form-input>
         </b-col>
@@ -119,16 +111,14 @@
           <b-form-input
             v-model="percentageGra"
             type="number"
-            id="input-default"
             placeholder="Enter gradutation percentage"
           ></b-form-input>
         </b-col>
       </b-row>
 
       <hr />
-      <!--
-     
-      <h3>Higher Secondary Education</h3>
+
+      <h3>Secondary Education</h3>
       <b-row class="my-1">
         <b-col sm="2">
           <label for="input-default">School:</label>
@@ -137,7 +127,6 @@
           <b-form-input
             v-model="school"
             type="text"
-            id="input-default"
             placeholder="Enter your college name"
           ></b-form-input>
         </b-col>
@@ -150,7 +139,6 @@
           <b-form-input
             v-model="boardSch"
             type="text"
-            id="input-default"
             placeholder="Enter your board name"
           ></b-form-input>
         </b-col>
@@ -162,8 +150,7 @@
         <b-col sm="8">
           <b-form-input
             v-model="StartDateSch"
-            type="date"
-            id="input-default"
+            type="number"
             placeholder="Gradutation start date"
           ></b-form-input>
         </b-col>
@@ -175,8 +162,7 @@
         <b-col sm="8">
           <b-form-input
             v-model="FinishDateSch"
-            type="date"
-            id="input-default"
+            type="number"
             placeholder="Gradutation complete date"
           ></b-form-input>
         </b-col>
@@ -189,7 +175,6 @@
           <b-form-input
             v-model="percentageSch"
             type="number"
-            id="input-default"
             placeholder="Enter gradutation percentage"
           ></b-form-input>
         </b-col>
@@ -197,16 +182,15 @@
 
       <hr />
 
-      <h3>Secondary Education</h3>
+      <h3>Higher Secondary Education</h3>
       <b-row class="my-1">
         <b-col sm="2">
           <label for="input-default"> College:</label>
         </b-col>
         <b-col sm="8">
           <b-form-input
-            v-model="collegename"
+            v-model="collegehse"
             type="text"
-            id="input-default"
             placeholder="Enter your college name"
           ></b-form-input>
         </b-col>
@@ -217,9 +201,8 @@
         </b-col>
         <b-col sm="8">
           <b-form-input
-            v-model="boardClg"
+            v-model="boardhse"
             type="text"
-            id="input-default"
             placeholder="Enter your board name"
           ></b-form-input>
         </b-col>
@@ -230,9 +213,8 @@
         </b-col>
         <b-col sm="8">
           <b-form-input
-            v-model="StartDateClg"
-            type="date"
-            id="input-default"
+            v-model="StartDatehse"
+            type="number"
             placeholder="Gradutation start date"
           ></b-form-input>
         </b-col>
@@ -243,9 +225,8 @@
         </b-col>
         <b-col sm="8">
           <b-form-input
-            v-model="FinishDateClg"
-            type="date"
-            id="input-default"
+            v-model="FinishDatehse"
+            type="number"
             placeholder="Gradutation complete date"
           ></b-form-input>
         </b-col>
@@ -256,13 +237,41 @@
         </b-col>
         <b-col sm="8">
           <b-form-input
-            v-model="percentageClg"
+            v-model="percentagehse"
             type="number"
-            id="input-default"
             placeholder="Enter gradutation percentage"
           ></b-form-input>
-        </b-col>  5ffa90e1168c000011e4dc3f
-      </b-row>-->
+        </b-col>
+      </b-row>
+      <b-row class="my-1">
+        <b-col sm="2">
+          <label for="input-default">Department:</label>
+        </b-col>
+        <b-col sm="8">
+          <b-form-input
+            v-model="departmenthse"
+            type="text"
+            placeholder="Enter gradutation percentage"
+          ></b-form-input>
+        </b-col>
+      </b-row>
+      <b-row class="my-1">
+        <b-col sm="2">
+          <label for="input-default">Skills:</label>
+        </b-col>
+        <b-col sm="7">
+          <b-form-tags
+            required
+            input-id="tags-pills"
+            v-model="skills"
+            tag-variant="dark"
+            tag-pills
+            size="lg"
+            separator=" "
+            placeholder="Enter new skills separated by space"
+          ></b-form-tags>
+        </b-col>
+      </b-row>
       <b-row>
         <b-col sm="4"></b-col>
         <b-col sm="3">
@@ -296,12 +305,14 @@ export default {
       StartDateSch: "",
       FinishDateSch: "",
       percentageSch: "",
-      collegename: "",
-      boardClg: "",
-      StartDateClg: "",
-      FinishDateClg: "",
-      percentageClg: "",
+      collegehse: "",
+      boardhse: "",
+      StartDatehse: "",
+      FinishDatehse: "",
+      percentagehse: "",
       Department: "",
+      departmenthse: "",
+      skills: [],
     };
   },
   methods: {
@@ -309,49 +320,77 @@ export default {
       const result = await this.$apollo.mutate({
         mutation: gql`
           mutation(
-            $candidateId: String
-            $college: String
-            $specialization: String
-            $from: Int
-            $to: Int
-            $percentage: Int
+            $candidateName: String!
+            $email: String!
+            $phoneNo: String!
+            $address: String!
+            $ugCollege: String!
+            $ugSpecialization: String!
+            $ugFrom: Int!
+            $ugTo: Int!
+            $ugPercentage: Float!
+            $sslcSchool: String!
+            $sslcBoard: String!
+            $sslcFrom: Int!
+            $sslcTo: Int!
+            $sslcPercentage: Float!
+            $hseSchool: String!
+            $hseBoard: String!
+            $hseSpecialization: String!
+            $hseFrom: Int!
+            $hseTo: Int!
+            $hsePercentage: Float!
+            $skills: [String]!
           ) {
-            addUg(
-              candidateId: $candidateId
-              college: $college
-              specialization: $specialization
-              from: $from
-              to: $to
-              percentage: $percentage
+            addCandidate(
+              candidateName: $candidateName
+              email: $email
+              phoneNo: $phoneNo
+              address: $address
+              ugCollege: $ugCollege
+              ugSpecialization: $ugSpecialization
+              ugFrom: $ugFrom
+              ugTo: $ugTo
+              ugPercentage: $ugPercentage
+              sslcSchool: $sslcSchool
+              sslcBoard: $sslcBoard
+              sslcFrom: $sslcFrom
+              sslcTo: $sslcTo
+              sslcPercentage: $sslcPercentage
+              hseSchool: $hseSchool
+              hseBoard: $hseBoard
+              hseSpecialization: $hseSpecialization
+              hseFrom: $hseFrom
+              hseTo: $hseTo
+              hsePercentage: $hsePercentage
+              skills: $skills
             ) {
-              candidateId
+              candidateName
             }
           }
         `,
         variables: {
-          /*candidateName: this.Fname,
+          candidateName: this.Fname,
           email: this.email,
           phoneNo: this.mobile,
           address: this.address,
-          */
-          candidateId: "5ffa90e1168c000011e4dc3f",
-          college: this.college,
-          specialization: this.Department,
-          from: parseInt(this.StartDateGra),
-          uto: parseInt(this.FinishDateGra),
-          percentage: parseInt(this.percentageGra),
-          /*
+          ugCollege: this.college,
+          ugSpecialization: this.Department,
+          ugFrom: parseInt(this.StartDateGra),
+          ugTo: parseInt(this.FinishDateGra),
+          ugPercentage: parseFloat(this.percentageGra),
           sslcSchool: this.school,
           sslcBoard: this.boardSch,
-          sslcFrom: this.StartDateSch,
-          sslcTo: this.FinishDateSch,
-          sslcPercentage: this.percentageSch,
-          hseSchool: this.collegename,
-          hseBoard: this.boardClg,
-          hseSpecialization:,
-          hseFrom: this.StartDateClg,
-          hseTo: this.FinishDateClg,
-          hsePercentage: this.percentageClg,*/
+          sslcFrom: parseInt(this.StartDateSch),
+          sslcTo: parseInt(this.FinishDateSch),
+          sslcPercentage: parseFloat(this.percentageSch),
+          hseSchool: this.collegehse,
+          hseBoard: this.boardhse,
+          hseSpecialization: this.departmenthse,
+          hseFrom: parseInt(this.StartDatehse),
+          hseTo: parseInt(this.FinishDatehse),
+          hsePercentage: parseFloat(this.percentagehse),
+          skills: this.skills,
         },
       });
 

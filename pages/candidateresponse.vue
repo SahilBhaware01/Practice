@@ -116,36 +116,6 @@ import gql from "graphql-tag";
 export default {
   name: "google",
   apollo: {
-    vacancies: gql`
-      query {
-        vacancies {
-          vacancyPost
-          noOfOpenings
-          stipend
-          perks
-        }
-      }
-    `,
-    vacancy: gql`
-      query {
-        vacancy(vacancyId: "5ff7496415c78b35ec6ac22f") {
-          vacancyPost
-        }
-      }
-    `,
-    candidates: gql`
-      query {
-        candidates {
-          candidateName
-          email
-          phoneNo
-          address
-          pgCollege
-          pgSpecialization
-          pgFrom
-        }
-      }
-    `,
     responses: gql`
       query {
         responses {
@@ -209,7 +179,7 @@ export default {
     },
   },
   mounted() {
-    this.totalRows = this.candidates.length;
+    this.totalRows = this.responses.length;
   },
   methods: {
     info(item, index, button) {

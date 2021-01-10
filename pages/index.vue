@@ -136,15 +136,28 @@ export default {
     candidates: gql`
       query {
         candidates {
+          candidateId
           candidateName
           email
           phoneNo
           address
           ugCollege
           ugSpecialization
-          ugFrom
           ugTo
+          ugFrom
           ugPercentage
+          sslcSchool
+          sslcBoard
+          sslcTo
+          sslcFrom
+          sslcPercentage
+          hseTo
+          hseFrom
+          hseBoard
+          hseSchool
+          hsePercentage
+          hseSpecialization
+          skills
         }
       }
     `,

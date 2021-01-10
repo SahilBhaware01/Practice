@@ -15,7 +15,7 @@
               <card>
                 <h4>{{ vac.vacancyPost }}</h4>
                 <h4>
-                  <p class="text-muted">{{ vac.id }}</p>
+                  <p class="text-muted">{{ vac.vacancyId }}</p>
                 </h4>
                 <hr />
                 <b-row>
@@ -47,11 +47,13 @@
                 <hr />
                 <b-row>
                   <b-col sm="3">
-                    <b-button sm="3" @click="deletevacancy(vac.id)">Delete</b-button>
+                    <b-button sm="3" @click="deletevacancy(vac.vacancyId)"
+                      >Delete</b-button
+                    >
                   </b-col>
                   <b-col sm="6"></b-col>
                   <b-col sm="3">
-                    <b-button sm="3" variant="info" @click="updatevacancy(vac.id)"
+                    <b-button sm="3" variant="info" @click="getvacancy(vac.vacancyId)"
                       >Update</b-button
                     ></b-col
                   >
@@ -62,7 +64,7 @@
         </li>
       </ul>
       <div>
-        <b-modal ref="updateform" hide-footer title="Vacany Update">
+        <b-modal ref="updateform" body-bg-variant="dark" hide-footer>
           <b-row class="my-1">
             <h3>Edit Vacancy</h3>
             <!--{{ vacancy }}
@@ -183,7 +185,9 @@
           <b-row class="my-1">
             <b-col sm="3"> </b-col>
           </b-row>
-          <b-button class="mt-2" variant="outline-success" block>Submit</b-button>
+          <b-button class="mt-2" variant="outline-success" @click="updatevacancy" block
+            >Submit</b-button
+          >
 
           <b-button class="mt-3" variant="outline-danger" block @click="hidemodal"
             >Cancel</b-button
@@ -207,17 +211,16 @@ export default {
       Upstipend: undefined,
       perks: [],
       Upduration: undefined,
-      UpaboutPost: "",
+      UpaboutPost: undefined,
       UpskillsRequired: [],
-      status: true,
+      Upstatus: true,
       value1: false,
       Upvalue2: "",
       Upvalue3: "",
+      upvacancy: [],
     };
   },
-  mounted() {
-    this.getdata();
-  },
+  mounted() {},
 
   components: {
     BaseAlert,
@@ -226,6 +229,7 @@ export default {
     vacancies: gql`
       query getVacancies {
         vacancies {
+          vacancyId
           vacancyPost
           noOfOpenings
           stipend
@@ -253,19 +257,116 @@ export default {
       });
       this.$router.push("/Vacancies");
     },
-    async updatevacancy(id) {
+
+    async getvacancy(id) {
       this.vacancID = id;
-      await this.getdata();
+      console.log(id);
+      this.upvacancy = await this.$apollo.mutate({
+        mutation: gql`
+          mutation($vacancyId: ID!) {
+            vacancy(vacancyId: $vacancyId) {
+              vacancyPost
+              noOfOpenings
+              stipend
+              perks
+              duration
+              aboutPost
+              skillsRequired
+            }
+          }
+        `,
+        variables: {
+          vacancyId: id,
+        },
+      });
+
+      (this.UpvacancyPost = this.upvacancy.data.vacancy.vacancyPost),
+        (this.UpnoOfOpenings = this.upvacancy.data.vacancy.noOfOpenings),
+        (this.Upstipend = this.upvacancy.data.vacancy.stipend),
+        (this.perks = this.upvacancy.data.vacancy.perks),
+        (this.Upduration = this.upvacancy.data.vacancy.duration),
+        (this.UpaboutPost = this.upvacancy.data.vacancy.aboutPost),
+        (this.UpskillsRequired = this.upvacancy.data.vacancy.skillsRequired);
+      if (this.perks) {
+        this.value1 = true;
+        if (this.perks.length > 1) {
+          this.Upvalue2 = "Letter";
+          this.Upvalue3 = "Certificate";
+        } else if (this.perks[0] == "letter") {
+          this.UPvalue2 = "Letter";
+        } else if (this.perks[0] == "certificate") {
+          this.Upvalue3 = "Certificate";
+        }
+      }
+
       this.showmodal();
+    },
+    async updatevacancy() {
+      console.log(this.vacancID);
+      console.log(this.UpnoOfOpenings);
+      console.log(this.UpvacancyPost);
+      console.log(this.Upstipend);
+      console.log(this.Upduration);
+      console.log(this.UpaboutPost);
+      console.log(this.UpskillsRequired);
+      console.log(this.perks);
+      this.perks = [];
+      if (this.value2 && this.value3) {
+        this.perks.push(this.Upvalue2);
+        this.perks.push(this.Upvalue3);
+      } else if (this.Upvalue3) {
+        this.perks.push(this.Upvalue3);
+      } else if (this.Upvalue2) {
+        this.perks.push(this.Upvalue2);
+      }
+      const results = await this.$apollo.mutate({
+        mutation: gql`
+          mutation(
+            $vacancyId: ID!
+            $vacancyPost: String!
+            $noOfOpenings: Int!
+            $stipend: Int!
+            $perks: [String]!
+            $duration: Int!
+            $aboutPost: String!
+            $skillsRequired: [String]!
+            $status: Boolean!
+          ) {
+            vacancyUpdate(
+              vacancyId: $vacancyId
+              vacancyPost: $vacancyPost
+              noOfOpenings: $noOfOpenings
+              stipend: $stipend
+              perks: $perks
+              duration: $duration
+              aboutPost: $aboutPost
+              skillsRequired: $skillsRequired
+              status: $status
+            ) {
+              aboutPost
+            }
+          }
+        `,
+        variables: {
+          vacancyId: this.vacancID,
+          vacancyPost: this.UpvacancyPost,
+          noOfOpenings: parseInt(this.UpnoOfOpenings),
+          stipend: parseInt(this.Upstipend),
+          perks: this.perks,
+          duration: parseInt(this.Upduration),
+          aboutPost: this.UpaboutPost,
+          skillsRequired: this.UpskillsRequired,
+          status: this.Upstatus,
+        },
+      });
+      this.$router.push("/");
+      this.hidemodal();
     },
     showmodal() {
       this.$refs["updateform"].show();
     },
     hidemodal() {
       this.$refs["updateform"].hide();
-    },
-    getdata() {
-      // console.log(vacancy);
     },
   },
 };
