@@ -222,11 +222,10 @@ export default {
         });
     },
   },
-  mounted() {
-    this.totalRows = this.candidates.length;
-  },
+  mounted() {},
   methods: {
     info(item, index, button) {
+      this.totalRows = this.candidates.length;
       this.infoModal.title = `Row index: ${index}`;
       this.infoModal.content = JSON.stringify(candidates, null, 2);
       this.$root.$emit("bv::show::modal", this.infoModal.id, button);

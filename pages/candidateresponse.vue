@@ -178,11 +178,10 @@ export default {
         });
     },
   },
-  mounted() {
-    this.totalRows = this.responses.length;
-  },
+  mounted() {},
   methods: {
     info(item, index, button) {
+      this.totalRows = this.responses.length;
       this.infoModal.title = `Row index: ${index}`;
       this.infoModal.content = JSON.stringify(responses, null, 2);
       this.$root.$emit("bv::show::modal", this.infoModal.id, button);

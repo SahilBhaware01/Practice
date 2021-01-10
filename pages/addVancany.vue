@@ -143,13 +143,9 @@ export default {
       value1: false,
       value2: "",
       value3: "",
-      WhoCanApply: ["sm", "tm"],
-      std: 10072020,
-      assessments: ["fg", "jk"],
     };
   },
   name: "addVacancy",
-
   methods: {
     async onSubmit() {
       if (this.value2 && this.value3) {
