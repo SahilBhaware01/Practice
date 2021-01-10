@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="header">
-      <h1>Vacancies</h1>
-      <button class="add-vacancy">
-        <NuxtLink to="/addVancany">Add Vacancy</NuxtLink>
-      </button>
+      <h1>VACANCIES</h1>
+      <nuxt-link to="/addVancany"
+        ><b-button class="float-right">Add Vacancy</b-button></nuxt-link
+      >
     </div>
     <div class="vacancies-list">
       <ul>
@@ -54,7 +54,7 @@
                   <b-col sm="6"></b-col>
                   <b-col sm="3">
                     <b-button sm="3" variant="info" @click="getvacancy(vac.vacancyId)"
-                      >Update</b-button
+                      >Edit</b-button
                     ></b-col
                   >
                 </b-row>

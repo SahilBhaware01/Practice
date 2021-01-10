@@ -122,7 +122,6 @@ export default {
           githubId
           vacancyId
           candidateId
-          assessmentAns
           projectsLinks
         }
       }

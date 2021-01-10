@@ -117,6 +117,7 @@ export default {
     extend (config, ctx) {
     },
     babel: {
+        compact: true,
       plugins: [
         [
           'component',
