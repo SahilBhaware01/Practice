@@ -65,7 +65,8 @@
         <b-modal ref="updateform" hide-footer title="Vacany Update">
           <b-row class="my-1">
             <h3>Edit Vacancy</h3>
-            {{ vacancy }}
+            <!--{{ vacancy }}
+-->
           </b-row>
           <b-row class="my-1">
             <b-col sm="3">
@@ -225,7 +226,6 @@ export default {
     vacancies: gql`
       query getVacancies {
         vacancies {
-          id
           vacancyPost
           noOfOpenings
           stipend
@@ -236,27 +236,6 @@ export default {
         }
       }
     `,
-    vacancy: {
-      query: gql`
-        query getVacancies($id: ID) {
-          vacancy(vacancyId: $id) {
-            id
-            vacancyPost
-            noOfOpenings
-            stipend
-            perks
-            duration
-            aboutPost
-            skillsRequired
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: this.vacancID,
-        };
-      },
-    },
   },
   methods: {
     async deletevacancy(id) {

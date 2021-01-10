@@ -31,16 +31,16 @@
           }"
         >
         </sidebar-item>
-        <!--
+
         <sidebar-item
           :link="{
-            name: $t('sidebar.notifications'),
+            name: 'response',
             icon: 'tim-icons icon-bell-55',
-            path: '/notifications',
+            path: '/candidateresponse',
           }"
         >
         </sidebar-item>
-
+        <!--
         <sidebar-item
           :link="{
             name: $t('sidebar.userProfile'),

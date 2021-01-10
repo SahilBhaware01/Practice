@@ -33,7 +33,7 @@
           show-empty
           small
           stacked="md"
-          :items="candidates"
+          :items="responses"
           :fields="fields"
           :current-page="currentPage"
           :per-page="perPage"
@@ -116,7 +116,7 @@ import gql from "graphql-tag";
 export default {
   name: "google",
   apollo: {
-    /*vacancies: gql`
+    vacancies: gql`
       query {
         vacancies {
           vacancyPost
@@ -132,7 +132,7 @@ export default {
           vacancyPost
         }
       }
-    `,*/
+    `,
     candidates: gql`
       query {
         candidates {
@@ -140,42 +140,41 @@ export default {
           email
           phoneNo
           address
-          ugCollege
-          ugSpecialization
-          ugFrom
-          ugTo
-          ugPercentage
+          pgCollege
+          pgSpecialization
+          pgFrom
         }
       }
     `,
-    /* query{
-  responses{
-  	githubId
-    vacancyId
-    candidateId
-    assessmentAns
-    projectsLinks
-    
-	}
-}*/
+    responses: gql`
+      query {
+        responses {
+          githubId
+          vacancyId
+          candidateId
+          assessmentAns
+          projectsLinks
+        }
+      }
+    `,
   },
   data() {
     return {
       fields: [
         {
-          key: "candidateName",
+          key: "candidateId",
           label: "Candidate Name",
           sortable: true,
           sortDirection: "asc",
         },
         {
-          key: "email",
+          key: "githubId",
           label: "Candidate Email",
           sortable: true,
           sortDirection: "asc",
         },
         {
-          key: "phoneNo",
+          key: "vacancyId",
           label: "Candidate Mobile",
           sortable: true,
           sortDirection: "desc",
@@ -215,7 +214,7 @@ export default {
   methods: {
     info(item, index, button) {
       this.infoModal.title = `Row index: ${index}`;
-      this.infoModal.content = JSON.stringify(candidates, null, 2);
+      this.infoModal.content = JSON.stringify(responses, null, 2);
       this.$root.$emit("bv::show::modal", this.infoModal.id, button);
     },
     resetInfoModal() {
