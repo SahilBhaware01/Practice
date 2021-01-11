@@ -43,6 +43,7 @@
           hide-header
           hide-backdrop
           hide-footer
+          class="modal-scrollbar-measure"
         >
           <b-row class="my-1">
             <h3>Edit Candidate</h3>
@@ -346,6 +347,7 @@
           </b-row>
           <h4>Personal Details</h4>
           <b-container fluid>
+            <label>{{ candidate_Id }}</label>
             <b-row class="my-1">
               <b-col sm="3">
                 <label for="input-default">Full Name:</label>
@@ -359,7 +361,6 @@
                 ></b-form-input>
               </b-col>
             </b-row>
-
             <b-row class="my-1">
               <b-col sm="3">
                 <label for="input-default">Email:</label>
@@ -844,7 +845,7 @@ export default {
           candidateId: id,
         },
       });
-      this.candidate_Id = id;
+      this.candidate_id = this.singlecandidate.data.candidate.candidateId;
       (this.sFname = this.singlecandidate.data.candidate.candidateName),
         (this.semail = this.singlecandidate.data.candidate.email),
         (this.smobile = this.singlecandidate.data.candidate.phoneNo),
@@ -973,5 +974,8 @@ export default {
     height: 300px;
     width: 100%;
   }
+}
+.modal-scrollbar-measure {
+  overflow: hidden !important;
 }
 </style>
