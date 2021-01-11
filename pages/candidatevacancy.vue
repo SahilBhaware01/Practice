@@ -45,9 +45,7 @@
                 <b-row>
                   <b-col sm="9"></b-col>
                   <b-col sm="3">
-                    <nuxt-link to="/candidate"
-                      ><b-button sm="3" variant="info">Apply</b-button></nuxt-link
-                    >
+                    <b-button sm="3" variant="info">Apply</b-button>
                   </b-col>
                 </b-row>
               </card>
