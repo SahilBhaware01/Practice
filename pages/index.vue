@@ -624,7 +624,7 @@
                 <label for="input-default">Skills:</label>
               </b-col>
               <b-col sm="10">
-               <label>{{sskills}}</label>
+                <label>{{ sskills }}</label>
               </b-col>
             </b-row>
           </b-container>
